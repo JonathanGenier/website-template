@@ -1,0 +1,46 @@
+import Link from "next/link";
+import Container from "./Container";
+import MobileMenu from "./MobileMenu";
+import NavLink from "./NavLink";
+import LanguageToggler from "./LanguageToggler";
+import { NAV_LINKS } from "@/lib/navigation";
+import { primaryButton } from "@/lib/styles";
+
+export default function Navbar() {
+  return (
+    <nav className="relative border-b" aria-label="Main navigation">
+      <Container>
+        <div className="flex items-center justify-between py-4">
+          <Link
+            href="/"
+            className="inline-flex items-center shrink-0"
+            aria-label="Maple Digital home"
+          >
+            <img
+              src="/maple-digital-logo.svg"
+              alt="Maple Digital"
+              className="h-10 w-auto"
+            />
+          </Link>
+
+          <ul className="hidden items-center gap-4 md:flex">
+            {NAV_LINKS.map((link) => (
+              <li key={link.href}>
+                <NavLink href={link.href} label={link.label} />
+              </li>
+            ))}
+          </ul>
+
+          <div className="hidden md:flex items-center gap-6 lg:gap-10">
+            <LanguageToggler />
+            <Link href="/contact" className={primaryButton}>
+              Get a Free Quote
+            </Link>
+          </div>
+
+          <MobileMenu />
+        </div>
+      </Container>
+    </nav>
+  );
+}
