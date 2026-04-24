@@ -10,11 +10,9 @@ import {
   mobileMenuNavLink,
   primaryButton,
 } from "@/lib/styles";
-import {
-  Bars3Icon,
-  ChevronRightIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
+import { FaChevronRight } from "react-icons/fa6";
+import { MdClose } from "react-icons/md";
+import { FaBars } from "react-icons/fa";
 
 export default function MobileMenu() {
   const [open, setOpen] = useState(false);
@@ -58,9 +56,9 @@ export default function MobileMenu() {
         aria-controls="mobile-menu"
       >
         {open ? (
-          <XMarkIcon aria-hidden="true" className="h-6 w-6" />
+          <MdClose aria-hidden="true" className="h-6 w-6" />
         ) : (
-          <Bars3Icon aria-hidden="true" className="h-6 w-6" />
+          <FaBars aria-hidden="true" className="h-6 w-6" />
         )}
       </button>
 
@@ -88,7 +86,7 @@ export default function MobileMenu() {
                       {link.label}
                     </span>
 
-                    <ChevronRightIcon
+                    <FaChevronRight
                       aria-hidden="true"
                       className={`h-5 w-5 transition-transform duration-200 ${
                         isActive ? "rotate-180 text-blue-600" : "text-gray-400"

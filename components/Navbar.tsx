@@ -3,6 +3,7 @@ import Container from "./Container";
 import MobileMenu from "./MobileMenu";
 import NavLink from "./NavLink";
 import LanguageToggler from "./LanguageToggler";
+import Logo from "./Logo";
 import { NAV_LINKS } from "@/lib/navigation";
 import { primaryButton } from "@/lib/styles";
 
@@ -11,17 +12,7 @@ export default function Navbar() {
     <nav className="relative border-b" aria-label="Main navigation">
       <Container>
         <div className="flex items-center justify-between py-4">
-          <Link
-            href="/"
-            className="inline-flex items-center shrink-0"
-            aria-label="Maple Digital home"
-          >
-            <img
-              src="/maple-digital-logo.svg"
-              alt="Maple Digital"
-              className="h-10 w-auto"
-            />
-          </Link>
+          <Logo variant="light" />
 
           <ul className="hidden items-center gap-4 md:flex">
             {NAV_LINKS.map((link) => (
