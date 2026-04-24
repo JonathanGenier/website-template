@@ -5,33 +5,35 @@ import NavLink from "./NavLink";
 import LanguageToggler from "./LanguageToggler";
 import Logo from "./Logo";
 import { NAV_LINKS } from "@/lib/navigation";
-import { primaryButton } from "@/lib/styles";
+import { navbarCTA, focusRing } from "@/lib/styles";
 
 export default function Navbar() {
   return (
-    <nav className="relative border-b" aria-label="Main navigation">
-      <Container>
-        <div className="flex items-center justify-between py-4">
-          <Logo variant="light" />
+    <header>
+      <nav className="relative border-b" aria-labelledby="main-nav-heading">
+        <Container>
+          <div className="flex items-center justify-between py-4">
+            <Logo variant="light" />
 
-          <ul className="hidden items-center gap-4 md:flex">
-            {NAV_LINKS.map((link) => (
-              <li key={link.href}>
-                <NavLink href={link.href} label={link.label} />
-              </li>
-            ))}
-          </ul>
+            <ul className="hidden items-center gap-4 md:flex">
+              {NAV_LINKS.map((link) => (
+                <li key={link.href}>
+                  <NavLink href={link.href} label={link.label} />
+                </li>
+              ))}
+            </ul>
 
-          <div className="hidden md:flex items-center gap-6 lg:gap-10">
-            <LanguageToggler />
-            <Link href="/contact" className={primaryButton}>
-              Get a Free Quote
-            </Link>
+            <div className="hidden md:flex items-center gap-6 lg:gap-10">
+              <LanguageToggler />
+              <Link href="/contact" className={`${navbarCTA} px-4 py-2`}>
+                Get a Free Quote
+              </Link>
+            </div>
+
+            <MobileMenu />
           </div>
-
-          <MobileMenu />
-        </div>
-      </Container>
-    </nav>
+        </Container>
+      </nav>
+    </header>
   );
 }

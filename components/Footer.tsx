@@ -23,9 +23,9 @@ export default function Footer() {
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div className="flex flex-col items-center lg:items-start">
             <div className="inline-block">
-              <Logo variant="dark" className="mb-8" />
+              <Logo variant="dark" />
 
-              <div className="flex justify-center">
+              <div className="flex justify-center mt-8">
                 <nav className="flex gap-5" aria-label="Social media links">
                   <a
                     href="#"

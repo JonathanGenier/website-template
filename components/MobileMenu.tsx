@@ -6,9 +6,11 @@ import { NAV_LINKS } from "@/lib/navigation";
 import Link from "next/link";
 import LanguageToggler from "./LanguageToggler";
 import {
+  mobileMenuActiveLink,
   mobileMenuButton,
-  mobileMenuNavLink,
-  primaryButton,
+  mobileMenuLink,
+  navbarCTA,
+  mobileMenuBottomCTA,
 } from "@/lib/styles";
 import { FaChevronRight } from "react-icons/fa6";
 import { MdClose } from "react-icons/md";
@@ -50,7 +52,7 @@ export default function MobileMenu() {
       <button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
-        className={mobileMenuButton}
+        className={`${mobileMenuButton} inline-flex items-center justify-center w-10 h-10 rounded-full`}
         aria-label={open ? "Close menu" : "Open menu"}
         aria-expanded={open}
         aria-controls="mobile-menu"
@@ -78,18 +80,20 @@ export default function MobileMenu() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className={mobileMenuNavLink}
+                    className={`${mobileMenuLink} flex items-center justify-between w-full px-4 py-3 border-b`}
                     aria-current={isActive ? "page" : undefined}
                     onClick={closeMenu}
                   >
-                    <span className={isActive ? "text-blue-600" : ""}>
+                    <span className={isActive ? mobileMenuActiveLink : ""}>
                       {link.label}
                     </span>
 
                     <FaChevronRight
                       aria-hidden="true"
                       className={`h-5 w-5 transition-transform duration-200 ${
-                        isActive ? "rotate-180 text-blue-600" : "text-gray-400"
+                        isActive
+                          ? `rotate-180 ${mobileMenuActiveLink}`
+                          : "text-gray-400"
                       }`}
                     />
                   </Link>
@@ -98,10 +102,12 @@ export default function MobileMenu() {
             })}
           </ul>
 
-          <div className="mt-4 border-t border-gray-200 px-4 pb-4 pt-4">
+          <div
+            className={`mt-4 border-t px-4 pb-4 pt-4 ${mobileMenuBottomCTA}`}
+          >
             <Link
               href="/contact"
-              className={`${primaryButton} block py-4 text-center`}
+              className={`${navbarCTA} block py-4 text-center`}
               onClick={closeMenu}
             >
               Get a Free Quote
