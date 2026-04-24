@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { navLink } from "@/lib/styles";
+import { navbarLink, navbarActiveLink, focusRing } from "@/lib/styles";
 
 type NavItemProps = {
   href: string;
@@ -17,10 +17,10 @@ export default function NavItem({ href, label }: NavItemProps) {
   return (
     <Link
       href={href}
-      className={navLink}
+      className={`${navbarLink} px-2`}
       aria-current={isActive ? "page" : undefined}
     >
-      <span className={isActive ? "text-blue-600" : ""}>{label}</span>
+      <span className={isActive ? navbarActiveLink : ""}>{label}</span>
     </Link>
   );
 }
