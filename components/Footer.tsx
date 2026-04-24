@@ -18,7 +18,7 @@ import { IoLocation } from "react-icons/io5";
 
 export default function Footer() {
   return (
-    <footer className={`${footer} border-t py-12`}>
+    <footer className={`${footer} border-t py-12`} aria-label="Website footer">
       <Container>
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div className="flex flex-col items-center lg:items-start">
@@ -26,97 +26,147 @@ export default function Footer() {
               <Logo variant="dark" className="mb-8" />
 
               <div className="flex justify-center">
-                <div className="flex gap-5">
-                  <Link href="#" aria-label="Facebook">
-                    <FaFacebook className={`${footerSocialIcon} h-5 w-5`} />
-                  </Link>
-                  <Link href="#" aria-label="Instagram">
+                <nav className="flex gap-5" aria-label="Social media links">
+                  <a
+                    href="#"
+                    aria-label="Visit Maple Digital on Facebook"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaFacebook
+                      className={`${footerSocialIcon} h-5 w-5`}
+                      aria-hidden="true"
+                    />
+                  </a>
+                  <a
+                    href="#"
+                    aria-label="Visit Maple Digital on Instagram"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <FaInstagramSquare
                       className={`${footerSocialIcon} h-5 w-5`}
+                      aria-hidden="true"
                     />
-                  </Link>
-                  <Link href="#" aria-label="LinkedIn">
-                    <FaLinkedin className={`${footerSocialIcon} h-5 w-5`} />
-                  </Link>
-                </div>
+                  </a>
+                  <a
+                    href="#"
+                    aria-label="Visit Maple Digital on LinkedIn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaLinkedin
+                      className={`${footerSocialIcon} h-5 w-5`}
+                      aria-hidden="true"
+                    />
+                  </a>
+                </nav>
               </div>
             </div>
           </div>
 
           <div>
             <h3 className={`${footerTitle} border-b pb-2 mb-4`}>Navigation</h3>
-            <ul className="space-y-3">
-              <li>
-                <Link href="/" className={footerLink}>
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className={footerLink}>
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className={footerLink}>
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className={footerLink}>
-                  Contact
-                </Link>
-              </li>
-            </ul>
+            <nav aria-label="Footer Navigation">
+              <ul className="space-y-3">
+                <li>
+                  <Link href="/" className={footerLink}>
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/about" className={footerLink}>
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services" className={footerLink}>
+                    Services
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact" className={footerLink}>
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+            </nav>
           </div>
 
           <div>
             <h3 className={`${footerTitle} border-b pb-2 mb-4`}>Services</h3>
-            <ul className="space-y-3">
-              <li>
-                <Link href="/services/web-design" className={footerLink}>
-                  Website Design
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/seo" className={footerLink}>
-                  SEO Optimization
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/performance" className={footerLink}>
-                  Performance
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/maintenance" className={footerLink}>
-                  Maintenance
-                </Link>
-              </li>
-            </ul>
+            <nav aria-label="Footer Services">
+              <ul className="space-y-3">
+                <li>
+                  <Link href="/services/web-design" className={footerLink}>
+                    Website Design
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/seo" className={footerLink}>
+                    SEO Optimization
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/performance" className={footerLink}>
+                    Performance
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/maintenance" className={footerLink}>
+                    Maintenance
+                  </Link>
+                </li>
+              </ul>
+            </nav>
           </div>
 
           <div>
             <h3 className={`${footerTitle} border-b pb-2 mb-4`}>Contact</h3>
-            <ul className="space-y-3">
-              <li className="flex">
-                <FaPhone className={`${footerContactIcon} h-4 w-auto mr-4`} />
-                <span>819-111-2222</span>
-              </li>
-              <li className="flex">
-                <MdMail className={`${footerContactIcon} h-4 w-auto mr-4`} />
-                <span>info@mapledigital.ca</span>
-              </li>
-              <li className="flex">
-                <FaClock className={`${footerContactIcon} h-4 w-auto mr-4`} />
-                <span>Mon – Fri 9AM – 6PM</span>
-              </li>
-              <li className="flex">
-                <IoLocation
-                  className={`${footerContactIcon} h-4 w-auto mr-4`}
-                />
-                <span>Gatineau, Québec</span>
-              </li>
-            </ul>
+            <address className="not-italic">
+              <ul className="space-y-3">
+                <li className="flex">
+                  <FaPhone
+                    className={`${footerContactIcon} h-4 w-auto mr-4`}
+                    aria-hidden="true"
+                  />
+                  <a
+                    href="tel:+18191112222"
+                    aria-label="Call Maple Digital at 819-111-2222"
+                    className={footerLink}
+                  >
+                    819-111-2222
+                  </a>
+                </li>
+                <li className="flex">
+                  <MdMail
+                    className={`${footerContactIcon} h-4 w-auto mr-4`}
+                    aria-hidden="true"
+                  />
+                  <a
+                    href="mailto:info@mapledigital.ca"
+                    aria-label="Email Maple Digital at info@mapledigital.ca"
+                    className={footerLink}
+                  >
+                    info@mapledigital.ca
+                  </a>
+                </li>
+                <li className="flex">
+                  <FaClock
+                    className={`${footerContactIcon} h-4 w-auto mr-4`}
+                    aria-hidden="true"
+                  />
+                  <span>Mon – Fri 9AM – 6PM</span>
+                </li>
+                <li className="flex">
+                  <IoLocation
+                    className={`${footerContactIcon} h-4 w-auto mr-4`}
+                    aria-hidden="true"
+                  />
+                  <span>Gatineau, Québec</span>
+                </li>
+              </ul>
+            </address>
           </div>
         </div>
 
@@ -126,14 +176,14 @@ export default function Footer() {
           <p>
             © {new Date().getFullYear()} Maple Digital. All rights reserved.
           </p>
-          <div className="flex gap-6">
+          <nav className="flex gap-6" aria-label="Legal">
             <Link href="/privacy-policy" className={footerLink}>
               Privacy Policy
             </Link>
-            <Link href="/terms" className={footerLink}>
+            <Link href="/terms-of-service" className={footerLink}>
               Terms of Service
             </Link>
-          </div>
+          </nav>
         </div>
       </Container>
     </footer>
