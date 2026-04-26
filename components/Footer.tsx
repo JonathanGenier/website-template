@@ -15,8 +15,19 @@ import {
 import { FaPhone, FaClock } from "react-icons/fa6";
 import { MdMail } from "react-icons/md";
 import { IoLocation } from "react-icons/io5";
+import { getTranslations } from "next-intl/server";
+import { NAV_LINKS } from "@/lib/navigation";
+import { SERVICES_LINKS } from "@/lib/services";
 
-export default function Footer() {
+export default async function Footer({ locale }: { locale: string }) {
+  const tFooter = await getTranslations({ locale, namespace: "footer" });
+  const tNavigation = await getTranslations({
+    locale,
+    namespace: "navigation",
+  });
+  const tServices = await getTranslations({ locale, namespace: "services" });
+  const tLegal = await getTranslations({ locale, namespace: "legal" });
+
   return (
     <footer className={`${footer} border-t py-12`} aria-label="Website footer">
       <Container>
@@ -69,26 +80,16 @@ export default function Footer() {
             <h3 className={`${footerTitle} border-b pb-2 mb-4`}>Navigation</h3>
             <nav aria-label="Footer Navigation">
               <ul className="space-y-3">
-                <li>
-                  <Link href="/" className={footerLink}>
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/about" className={footerLink}>
-                    About
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services" className={footerLink}>
-                    Services
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/contact" className={footerLink}>
-                    Contact
-                  </Link>
-                </li>
+                {NAV_LINKS.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={`/${locale}${link.href}`}
+                      className={footerLink}
+                    >
+                      {tNavigation(link.key)}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </nav>
           </div>
@@ -97,26 +98,16 @@ export default function Footer() {
             <h3 className={`${footerTitle} border-b pb-2 mb-4`}>Services</h3>
             <nav aria-label="Footer Services">
               <ul className="space-y-3">
-                <li>
-                  <Link href="/services/web-design" className={footerLink}>
-                    Website Design
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services/seo" className={footerLink}>
-                    SEO Optimization
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services/performance" className={footerLink}>
-                    Performance
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services/maintenance" className={footerLink}>
-                    Maintenance
-                  </Link>
-                </li>
+                {SERVICES_LINKS.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={`/${locale}${link.href}`}
+                      className={footerLink}
+                    >
+                      {tServices(`${link.key}.title`)}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </nav>
           </div>
@@ -156,7 +147,7 @@ export default function Footer() {
                     className={`${footerContactIcon} h-4 w-auto mr-4`}
                     aria-hidden="true"
                   />
-                  <span>Mon – Fri 9AM – 6PM</span>
+                  <span>{tFooter("hours")}</span>
                 </li>
                 <li className="flex">
                   <IoLocation
@@ -174,14 +165,14 @@ export default function Footer() {
           className={`${footerBottomContainer} mt-10 flex flex-col items-center justify-between gap-4 border-t pt-6 md:flex-row`}
         >
           <p>
-            © {new Date().getFullYear()} Maple Digital. All rights reserved.
+            {`© ${new Date().getFullYear()} Maple Digital. ${tFooter("copyright")}`}
           </p>
           <nav className="flex gap-6" aria-label="Legal">
-            <Link href="/privacy-policy" className={footerLink}>
-              Privacy Policy
+            <Link href={`/${locale}/privacy-policy`} className={footerLink}>
+              {tLegal("privacy")}
             </Link>
-            <Link href="/terms-of-service" className={footerLink}>
-              Terms of Service
+            <Link href={`/${locale}/terms-of-service`} className={footerLink}>
+              {tLegal("terms")}
             </Link>
           </nav>
         </div>
