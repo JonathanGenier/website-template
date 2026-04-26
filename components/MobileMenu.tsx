@@ -15,11 +15,15 @@ import {
 import { FaChevronRight } from "react-icons/fa6";
 import { MdClose } from "react-icons/md";
 import { FaBars } from "react-icons/fa";
+import { useLocale, useTranslations } from "next-intl";
+import { buildLocalizedPath, isActivePath } from "@/lib/nav-utils";
 
 export default function MobileMenu() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const menuRef = useRef<HTMLDivElement>(null);
+  const locale = useLocale();
+  const t = useTranslations("navigation");
 
   const closeMenu = () => setOpen(false);
 
@@ -71,21 +75,19 @@ export default function MobileMenu() {
         >
           <ul className="flex flex-col gap-2 p-4">
             {NAV_LINKS.map((link) => {
-              const isActive =
-                link.href === "/"
-                  ? pathname === "/"
-                  : pathname.startsWith(link.href);
+              const target = buildLocalizedPath(locale, link.href);
+              const isActive = isActivePath(pathname, target);
 
               return (
                 <li key={link.href}>
                   <Link
-                    href={link.href}
+                    href={target}
                     className={`${mobileMenuLink} flex items-center justify-between w-full px-4 py-3 border-b`}
                     aria-current={isActive ? "page" : undefined}
                     onClick={closeMenu}
                   >
                     <span className={isActive ? mobileMenuActiveLink : ""}>
-                      {link.label}
+                      {t(link.key)}
                     </span>
 
                     <FaChevronRight
@@ -93,7 +95,7 @@ export default function MobileMenu() {
                       className={`h-5 w-5 transition-transform duration-200 ${
                         isActive
                           ? `rotate-180 ${mobileMenuActiveLink}`
-                          : "text-gray-400"
+                          : `${mobileMenuLink}`
                       }`}
                     />
                   </Link>
@@ -110,7 +112,7 @@ export default function MobileMenu() {
               className={`${navbarCTA} block py-4 text-center`}
               onClick={closeMenu}
             >
-              Get a Free Quote
+              {t("cta")}
             </Link>
           </div>
         </div>
