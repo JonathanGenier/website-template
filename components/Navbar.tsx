@@ -2,7 +2,7 @@ import Link from "next/link";
 import Container from "./Container";
 import MobileMenu from "./MobileMenu";
 import NavItem from "./NavItem";
-import LanguageToggler from "./LanguageToggler";
+import LanguageSwitcher from "./LanguageSwitcher";
 import Logo from "./Logo";
 import { NAV_LINKS } from "@/lib/navigation";
 import { navbarCTA } from "@/lib/styles";
@@ -27,7 +27,7 @@ export default async function Navbar({ locale }: { locale: string }) {
             </ul>
 
             <div className="hidden md:flex items-center gap-6 lg:gap-10">
-              <LanguageToggler />
+              <LanguageSwitcher />
               <Link
                 href={`/${locale}/contact`}
                 className={`${navbarCTA} px-4 py-2`}

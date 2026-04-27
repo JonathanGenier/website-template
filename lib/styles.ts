@@ -10,7 +10,6 @@ export const navbarLink = `text-primary font-semibold transition hover:text-seco
 
 export const navbarActiveLink = "text-accent hover:text-secondary";
 
-// Mobile Menu styles
 export const mobileMenuStyles = {
   menuContainer: "border-b bg-white shadow-md",
   menuButton: `transition bg-primary text-white hover:opacity-80 rounded-full ${focusRing}`,
@@ -23,15 +22,16 @@ export const mobileMenuStyles = {
    shadow-md hover:shadow-sm hover:opacity-80 ${focusRing}`,
 };
 
-// Language Toggler
-export const languageToggler = `text-sm ${focusRing} z-51`;
-export const languageButton = `text-secondary hover:text-primary hover:cursor-pointer transition ${focusRing}`;
-export const languageActive = "text-accent font-semibold";
-export const languageMenu = `border border-secondary bg-white shadoow-md overflow-hidden rounded-md`;
-export const languageItem = `hover:bg-zinc-100 transition ${focusRing}`;
-export const languageAbreviation = "text-xs font-semibold text-secondary";
-export const languageLabels = "text-primary";
-export const languageCheckIcon = "text-accent";
+export const languageSwitcher = {
+  container: `text-sm ${focusRing} z-51`,
+  button: `text-secondary hover:text-primary hover:cursor-pointer transition ${focusRing}`,
+  activeLanguage: "text-accent font-semibold",
+  menu: `border border-secondary bg-white shadoow-md overflow-hidden rounded-md`,
+  menuItem: `hover:bg-zinc-100 transition ${focusRing}`,
+  abreviation: "text-xs font-semibold text-secondary",
+  label: "text-primary",
+  checkIcon: "text-accent",
+};
 
 // Footer styles
 export const footer = "bg-primary text-white text-sm";
