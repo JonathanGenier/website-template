@@ -2,7 +2,6 @@
 export const focusRing =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-3 focus-visible:ring-offset-white";
 
-// Navbar Styles
 export const navbarStyles = {
   container: "border-b bg-white shadow-md",
   link: `text-primary font-semibold transition hover:text-secondary ${focusRing}`,
@@ -34,17 +33,11 @@ export const languageSwitcher = {
   checkIcon: "text-accent",
 };
 
-// Footer styles
-export const footer = "bg-primary text-white text-sm";
-
-export const footerSocialIcon =
-  "text-accent/80 hover:text-accent transition-colors";
-
-export const footerLink =
-  "text-white   hover:text-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2";
-
-export const footerTitle = "text-lg font-semibold border-accent";
-
-export const footerContactIcon = "text-accent";
-
-export const footerBottomContainer = "border-accent";
+export const footerStyles = {
+  container: "bg-primary text-white text-sm",
+  socialIcon: `text-accent/80 hover:text-accent transition-colors hover:bg-white/10 ${focusRing} rounded-md`,
+  link: "text-white hover:text-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2",
+  title: "border-b text-lg font-semibold border-accent",
+  contactIcon: "text-accent",
+  bottomContainer: "border-t border-accent",
+};
