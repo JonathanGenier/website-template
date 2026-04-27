@@ -3,12 +3,13 @@ export const focusRing =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-3 focus-visible:ring-offset-white";
 
 // Navbar Styles
-export const navbarCTA = `bg-primary text-white text-sm font-semibold rounded-lg text-center transition 
-   shadow-md hover:shadow-sm hover:opacity-80 ${focusRing}`;
-
-export const navbarLink = `text-primary font-semibold transition hover:text-secondary ${focusRing}`;
-
-export const navbarActiveLink = "text-accent hover:text-secondary";
+export const navbarStyles = {
+  container: "border-b bg-white shadow-md",
+  link: `text-primary font-semibold transition hover:text-secondary ${focusRing}`,
+  activeLink: "text-accent hover:text-secondary",
+  ctaButton: `bg-primary text-white text-sm font-semibold rounded-lg text-center transition 
+   shadow-md hover:shadow-sm hover:opacity-80 ${focusRing}`,
+};
 
 export const mobileMenuStyles = {
   menuContainer: "border-b bg-white shadow-md",
