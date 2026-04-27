@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { NAV_LINKS } from "@/lib/navigation";
 import Link from "next/link";
-import LanguageToggler from "./LanguageToggler";
+import LanguageToggler from "./LanguageSwitcher";
 import { mobileMenuStyles as styles } from "@/lib/styles";
 import { FaChevronRight } from "react-icons/fa6";
 import { MdClose } from "react-icons/md";

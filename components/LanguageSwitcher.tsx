@@ -7,23 +7,14 @@ import { useLocale } from "next-intl";
 import { locales, Locale } from "@/i18n/config";
 import { GrLanguage } from "react-icons/gr";
 import { FaCheck } from "react-icons/fa";
-import {
-  languageToggler,
-  languageButton,
-  languageActive,
-  languageMenu,
-  languageItem,
-  languageAbreviation,
-  languageLabels,
-  languageCheckIcon,
-} from "@/lib/styles";
+import { languageSwitcher as styles } from "@/lib/styles";
 
 const LABELS: Record<Locale, string> = {
   en: "English",
   fr: "Français",
 };
 
-export default function LanguageToggler() {
+export default function LanguageSwitcher() {
   const pathname = usePathname();
   const currentLocale = useLocale();
 
@@ -75,46 +66,46 @@ export default function LanguageToggler() {
   }, [pathname]);
 
   return (
-    <div ref={ref} className={`relative ${languageToggler}`}>
+    <div ref={ref} className={`relative ${styles.container}`}>
       <button
         onClick={() => setOpen((prev) => !prev)}
         aria-haspopup="menu"
         aria-expanded={open}
         aria-controls="language-menu"
-        className={`flex items-center gap-2 py-4 px-3 md:py-2 -mx-2 ${languageButton}`}
+        className={`flex items-center gap-2 py-4 px-3 md:py-2 -mx-2 ${styles.button}`}
       >
         <GrLanguage className={`w-5 h-5`} />
 
         <span className="flex items-center gap-1 uppercase">
-          <span className={currentLocale === "en" ? languageActive : ""}>
+          <span className={currentLocale === "en" ? styles.activeLanguage : ""}>
             EN
           </span>
 
           <span>/</span>
 
-          <span className={currentLocale === "fr" ? languageActive : ""}>
+          <span className={currentLocale === "fr" ? styles.activeLanguage : ""}>
             FR
           </span>
         </span>
       </button>
 
       {open && (
-        <div className={`absolute right-0 mt-2 w-36 ${languageMenu}`}>
+        <div className={`absolute right-0 mt-2 w-36 ${styles.menu}`}>
           {locales.map((lang) => (
             <Link
               key={lang}
               href={getPath(lang)}
-              className={`flex items-center justify-between px-4 py-4 md:px-3 md:py-2 ${languageItem}`}
+              className={`flex items-center justify-between px-4 py-4 md:px-3 md:py-2 ${styles.menuItem}`}
             >
               <div className="flex items-center gap-2">
-                <span className={`w-5 ${languageAbreviation}`}>
+                <span className={`w-5 ${styles.abreviation}`}>
                   {lang.toUpperCase()}
                 </span>
-                <span className={languageLabels}>{LABELS[lang]}</span>
+                <span className={styles.label}>{LABELS[lang]}</span>
               </div>
 
               {currentLocale === lang && (
-                <FaCheck className={`w-3 h-3 ${languageCheckIcon}`} />
+                <FaCheck className={`w-3 h-3 ${styles.checkIcon}`} />
               )}
             </Link>
           ))}
