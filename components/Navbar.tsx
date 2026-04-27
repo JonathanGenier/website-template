@@ -1,19 +1,22 @@
 import Link from "next/link";
 import Container from "./Container";
 import MobileMenu from "./MobileMenu";
-import NavItem from "./NavItem";
+import NavbarItem from "./NavbarItem";
 import LanguageSwitcher from "./LanguageSwitcher";
 import Logo from "./Logo";
 import { NAV_LINKS } from "@/lib/navigation";
-import { navbarCTA } from "@/lib/styles";
 import { getTranslations } from "next-intl/server";
+import { navbarStyles as styles } from "@/lib/styles";
 
 export default async function Navbar({ locale }: { locale: string }) {
   const t = await getTranslations({ locale, namespace: "navigation" });
 
   return (
     <header>
-      <nav className="relative border-b" aria-labelledby="main-nav-heading">
+      <nav
+        className={`relative ${styles.container}`}
+        aria-labelledby="main-nav-heading"
+      >
         <Container>
           <div className="flex items-center justify-between py-4">
             <Logo variant="light" />
@@ -21,7 +24,7 @@ export default async function Navbar({ locale }: { locale: string }) {
             <ul className="hidden items-center gap-4 md:flex">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
-                  <NavItem href={`${link.href}`} translationKey={link.key} />
+                  <NavbarItem href={`${link.href}`} translationKey={link.key} />
                 </li>
               ))}
             </ul>
@@ -30,7 +33,7 @@ export default async function Navbar({ locale }: { locale: string }) {
               <LanguageSwitcher />
               <Link
                 href={`/${locale}/contact`}
-                className={`${navbarCTA} px-4 py-2`}
+                className={`${styles.ctaButton} px-4 py-2`}
               >
                 {t("cta")}
               </Link>

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { navbarLink, navbarActiveLink } from "@/lib/styles";
+import { navbarStyles as styles } from "@/lib/styles";
 import { useLocale, useTranslations } from "next-intl";
 import { buildLocalizedPath, isActivePath } from "@/lib/nav-utils";
 
@@ -11,7 +11,7 @@ type NavItemProps = {
   translationKey: string;
 };
 
-export default function NavItem({ href, translationKey }: NavItemProps) {
+export default function NavbarItem({ href, translationKey }: NavItemProps) {
   const locale = useLocale();
   const t = useTranslations("navigation");
   const pathname = usePathname();
@@ -22,10 +22,10 @@ export default function NavItem({ href, translationKey }: NavItemProps) {
   return (
     <Link
       href={target}
-      className={`${navbarLink} px-2`}
+      className={`${styles.link} px-2`}
       aria-current={isActive ? "page" : undefined}
     >
-      <span className={isActive ? navbarActiveLink : ""}>
+      <span className={isActive ? styles.activeLink : ""}>
         {t(translationKey)}
       </span>
     </Link>
