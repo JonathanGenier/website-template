@@ -11,13 +11,17 @@ export const navbarLink = `text-primary font-semibold transition hover:text-seco
 export const navbarActiveLink = "text-accent hover:text-secondary";
 
 // Mobile Menu styles
-export const mobileMenuButton = `transition bg-primary text-white hover:opacity-80 ${focusRing}`;
-
-export const mobileMenuLink = `border-secondary font-semibold text-primary transition hover:bg-secondary/10 ${focusRing}`;
-
-export const mobileMenuActiveLink = "text-accent hover:bg-secondary/10";
-
-export const mobileMenuBottomCTA = "border-secondary";
+export const mobileMenuStyles = {
+  menuContainer: "border-b bg-white shadow-md",
+  menuButton: `transition bg-primary text-white hover:opacity-80 rounded-full ${focusRing}`,
+  link: `border-b border-secondary font-semibold text-primary hover:bg-secondary/10 ${focusRing}`,
+  activeLink: "text-accent",
+  linkIcon: "text-primary",
+  activeLinkIcon: "text-accent",
+  bottomContainer: "border-t border-secondary",
+  ctaButton: `bg-primary text-white text-sm font-semibold rounded-lg text-center transition 
+   shadow-md hover:shadow-sm hover:opacity-80 ${focusRing}`,
+};
 
 // Language Toggler
 export const languageToggler = `text-sm ${focusRing} z-51`;

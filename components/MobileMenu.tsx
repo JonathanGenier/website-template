@@ -5,13 +5,7 @@ import { usePathname } from "next/navigation";
 import { NAV_LINKS } from "@/lib/navigation";
 import Link from "next/link";
 import LanguageToggler from "./LanguageToggler";
-import {
-  mobileMenuActiveLink,
-  mobileMenuButton,
-  mobileMenuLink,
-  navbarCTA,
-  mobileMenuBottomCTA,
-} from "@/lib/styles";
+import { mobileMenuStyles as styles } from "@/lib/styles";
 import { FaChevronRight } from "react-icons/fa6";
 import { MdClose } from "react-icons/md";
 import { FaBars } from "react-icons/fa";
@@ -56,7 +50,7 @@ export default function MobileMenu() {
       <button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
-        className={`${mobileMenuButton} inline-flex items-center justify-center w-10 h-10 rounded-full`}
+        className={`${styles.menuButton} inline-flex items-center justify-center w-12 h-12`}
         aria-label={open ? "Close menu" : "Open menu"}
         aria-expanded={open}
         aria-controls="mobile-menu"
@@ -71,7 +65,7 @@ export default function MobileMenu() {
       {open && (
         <div
           id="mobile-menu"
-          className="absolute inset-x-0 top-full z-50 border-b bg-white shadow-md"
+          className={`absolute inset-x-0 top-full z-50 ${styles.menuContainer}`}
         >
           <ul className="flex flex-col gap-2 p-4">
             {NAV_LINKS.map((link) => {
@@ -82,20 +76,20 @@ export default function MobileMenu() {
                 <li key={link.href}>
                   <Link
                     href={target}
-                    className={`${mobileMenuLink} flex items-center justify-between w-full px-4 py-3 border-b`}
+                    className={`${styles.link} flex items-center justify-between w-full px-4 py-3`}
                     aria-current={isActive ? "page" : undefined}
                     onClick={closeMenu}
                   >
-                    <span className={isActive ? mobileMenuActiveLink : ""}>
+                    <span className={isActive ? styles.activeLink : ""}>
                       {t(link.key)}
                     </span>
 
                     <FaChevronRight
                       aria-hidden="true"
-                      className={`h-5 w-5 transition-transform duration-200 ${
+                      className={`h-5 w-5 ${
                         isActive
-                          ? `rotate-180 ${mobileMenuActiveLink}`
-                          : `${mobileMenuLink}`
+                          ? `rotate-180 ${styles.activeLinkIcon}`
+                          : `${styles.linkIcon}`
                       }`}
                     />
                   </Link>
@@ -104,12 +98,10 @@ export default function MobileMenu() {
             })}
           </ul>
 
-          <div
-            className={`mt-4 border-t px-4 pb-4 pt-4 ${mobileMenuBottomCTA}`}
-          >
+          <div className={`mt-4 px-4 pb-4 pt-4 ${styles.bottomContainer}`}>
             <Link
               href="/contact"
-              className={`${navbarCTA} block py-4 text-center`}
+              className={`${styles.ctaButton} block py-4 text-center`}
               onClick={closeMenu}
             >
               {t("cta")}
